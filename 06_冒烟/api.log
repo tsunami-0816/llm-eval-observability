@@ -1,0 +1,8 @@
+﻿python : C:\Users\25399\AppData\Local\Doubao\User Data\sandbox_runtime\bases\772984f6fd3a8ae0ae7d2422cd7c2bfa\python\py
+thon.exe: No module named uvicorn
+所在位置 行:1 字符: 67
++ ... ability\backend"; python -m uvicorn main:app --port 8002 2>&1 | Out-F ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (C:\Users\25399\...e named uvicorn:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
