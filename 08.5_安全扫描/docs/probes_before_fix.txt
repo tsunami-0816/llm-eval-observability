@@ -1,0 +1,23 @@
+﻿PASS | A1 无key POST /api/traces -> 401 | got 401
+PASS | A2 错key POST /api/traces -> 401 | got 401
+FAIL | A3 无key GET /api/prompts -> 401 | got 200
+FAIL | A4 无key GET /api/datasets -> 401 | got 200
+FAIL | A5 无key GET /api/runs -> 401 | got 200
+FAIL | A6 无key GET /api/metrics/summary -> 401 | got 200
+FAIL | A7 无key POST /api/prompts(写) -> 401 | got 200
+PASS | A8 带key改 project_id=2 横向读取（单租户设计，记录行为） | got 200 body={"code":0,"data":[],"message":"ok"}
+PASS | B1 SQLi trace_id -> 404 且不泄露 SQL | got 404 body={"detail":"trace not found"}
+PASS | B2 SQLi project_id -> 422 类型拦截 | got 422
+PASS | C1 XSS payload 作为惰性文本存储/回读 | prompt_id=79 stored=True
+PASS | D1 /docs 可访问（记录，生产须关） | got 200
+PASS | D2 /openapi.json 可访问（记录，生产须关） | got 200
+PASS | E1 ClickHouse 8123 无密码直连查询应被拒 | noauth=403 Code: 516. DB::Exception: default: Authentication failed: pa
+PASS | E2 Redis 6381 无密码 PING 可通（本地绑定，P3 留档） | resp=+PONG
+CLEAN | 删除探针 prompt 2 行
+
+== 汇总: 10 PASS / 5 FAIL ==
+  FAIL: A3 无key GET /api/prompts -> 401 -> got 200
+  FAIL: A4 无key GET /api/datasets -> 401 -> got 200
+  FAIL: A5 无key GET /api/runs -> 401 -> got 200
+  FAIL: A6 无key GET /api/metrics/summary -> 401 -> got 200
+  FAIL: A7 无key POST /api/prompts(写) -> 401 -> got 200
