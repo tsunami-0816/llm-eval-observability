@@ -1,5 +1,21 @@
+# 修复-SEC001: 密钥与环境文件严禁入库（10.5 push 前必须存在本文件）
+.env
+*.local
+
+# Python
 __pycache__/
 *.pyc
-*.db
-.env
+.pytest_cache/
+
+# Node / 前端构建产物
 node_modules/
+dist/
+
+# 测试运行产物（用例/配置/清单入库，报告与压测数据不入库）
+08_测试/qa-automation/reports/
+08_测试/qa-automation/perf_results.json
+08_测试/qa-automation/jmeter/*.jtl
+
+# 联调备份与运行日志（含真实数据/密钥，严禁入库）
+07_联调/backup_*
+*.log

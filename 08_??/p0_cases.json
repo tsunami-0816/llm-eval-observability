@@ -1,0 +1,21 @@
+{
+  "_comment": "P0 冒烟回归用例清单。项目无 scripts/p0_regression_test.py，格式自定义：cases 为 pytest node id 数组。等效冒烟命令（推荐，直接按 marker 选）：python -m pytest -m p0 --tb=short -q",
+  "smoke_command": "python -m pytest -m p0 --tb=short -q",
+  "cases": [
+    "testcases/l1_unit/test_tracer.py::TestTraceCall::test_m1_sdk_overhead_p95_under_50ms",
+    "testcases/l1_unit/test_reporter.py::TestReporter::test_m8_report_failure_not_blocking_business",
+    "testcases/l2_api/test_prompts_api.py::TestPromptsApi::test_create_prompt_success",
+    "testcases/l2_api/test_datasets_api.py::TestDatasetsApi::test_create_dataset_success",
+    "testcases/l2_api/test_datasets_api.py::TestDatasetsApi::test_import_cases_success",
+    "testcases/l2_api/test_traces_api.py::TestTracesApi::test_report_traces_accepted",
+    "testcases/l2_api/test_traces_api.py::TestTracesApi::test_trace_flush_roundtrip",
+    "testcases/l2_api/test_runs_api.py::TestRunsApi::test_create_run_success",
+    "testcases/l2_api/test_runs_api.py::TestRunsApi::test_create_run_duplicate_409",
+    "testcases/l2_api/test_runs_api.py::TestRunsApi::test_run_done_scores",
+    "testcases/l2_api/test_metrics_api.py::TestMetricsApi::test_summary_fields",
+    "testcases/l2_api/test_metrics_api.py::TestMetricsApi::test_timeseries_positive",
+    "testcases/l4_e2e/test_main_flow.py::TestMainFlow::test_eval_main_flow",
+    "testcases/l4_e2e/test_main_flow.py::TestMainFlow::test_sdk_trace_call_full_link",
+    "testcases/l4_e2e/test_main_flow.py::TestMainFlow::test_multi_source_traces"
+  ]
+}

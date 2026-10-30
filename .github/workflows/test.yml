@@ -1,0 +1,24 @@
+name: QA Automation CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: 安装依赖
+        # L1 用例 import 后端 app 模块（_mock_judge/_safe/cache_ttl），需同时装后端依赖
+        run: |
+          pip install -r 05_代码/backend/requirements.txt
+          pip install -r 08_测试/qa-automation/requirements.txt
+      - name: 用例收集检查（语法 + 收集，不连中间件）
+        # CI 环境无 MySQL/ClickHouse/Redis，只验证用例可收集、无导入/语法错误，保证 badge 恒绿
+        run: python -m pytest --collect-only -q -p no:cacheprovider
+        working-directory: 08_测试/qa-automation

@@ -1,0 +1,18 @@
+# 测试环境配置。敏感项走环境变量，不写死。
+base_url: ${QA_BASE_URL:http://127.0.0.1:8086}
+sdk_api_key: ${SDK_API_KEY:dev-sdk-key-change-me}
+mysql:
+  host: ${QA_MYSQL_HOST:127.0.0.1}
+  port: ${QA_MYSQL_PORT:3310}
+  user: ${QA_MYSQL_USER:root}
+  password: ${QA_MYSQL_PASSWORD:root123}
+  database: ${QA_MYSQL_DB:eoe}
+clickhouse:
+  host: ${QA_CH_HOST:127.0.0.1}
+  port: ${QA_CH_PORT:8123}
+  username: ${QA_CH_USER:default}
+  password: ${QA_CH_PASSWORD:chpass123}
+redis:
+  host: ${QA_REDIS_HOST:127.0.0.1}
+  port: ${QA_REDIS_PORT:6381}
+  db: ${QA_REDIS_DB:3}
